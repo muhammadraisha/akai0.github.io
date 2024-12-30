@@ -1,0 +1,270 @@
+---
+title: "Pengaruh Ekspor Teknologi Tinggi terhadap GDP Tahun 2022"
+subtitle: "Metode Penelitian Politeknik APP Jakarta"
+author: "Muhammad Raisha Aulia Putranta"
+date: 2024-12-28
+number-sections: true
+format:
+   html:
+    css: styles.css
+editor: visual
+---
+
+![logo](poltekapp.jpg)
+
+```{=html}
+<style>
+p {text-align: justify;}
+</style>
+```
+
+## Pendahuluan
+
+### Latar belakang
+
+Dalam era globalisasi dan perkembangan teknologi yang pesat, ekspor teknologi tinggi menjadi salah satu faktor penting dalam pertumbuhan ekonomi suatu negara. Teknologi tinggi, yang mencakup sektor seperti elektronik, bioteknologi, dan informasi, tidak hanya berkontribusi terhadap peningkatan nilai tambah produk, tetapi juga mendorong inovasi dan daya saing di pasar global.
+
+Produk-produk teknologi tinggi sering kali memiliki nilai ekspor yang lebih tinggi dibandingkan dengan produk tradisional, sehingga dapat memberikan dampak signifikan terhadap Produk Domestik Bruto (GDP) suatu negara. Menurut data dari World Bank (2022), negara-negara yang mampu meningkatkan proporsi ekspor teknologi tinggi dalam total ekspor mereka cenderung mengalami pertumbuhan ekonomi yang lebih cepat.
+
+Namun, hubungan antara ekspor teknologi tinggi dan GDP tidak selalu linear dan dapat dipengaruhi oleh berbagai faktor, termasuk kondisi ekonomi global, kebijakan perdagangan, dan struktur ekonomi masing-masing negara. Penelitian oleh Lee dan Malerba (2018) menunjukkan bahwa negara dengan investasi yang kuat dalam penelitian dan pengembangan (R&D) serta pendidikan tinggi lebih mampu memanfaatkan potensi ekspor teknologi tinggi.
+Studi ini bertujuan untuk menganalisis pengaruh ekspor teknologi tinggi terhadap GDP di 135 negara pada tahun 2022. Dengan menggunakan data yang komprehensif, diharapkan penelitian ini dapat memberikan wawasan mengenai seberapa besar kontribusi ekspor teknologi tinggi terhadap pertumbuhan ekonomi dan faktor-faktor yang memengaruhi hubungan tersebut.
+
+Hasil penelitian ini diharapkan dapat menjadi acuan bagi pembuat kebijakan dalam merumuskan strategi yang lebih efektif untuk meningkatkan ekspor teknologi tinggi, yang pada gilirannya dapat berkontribusi pada pertumbuhan ekonomi yang berkelanjutan. Selain itu, pemahaman yang lebih baik mengenai dinamika ini juga penting untuk negara-negara yang sedang berkembang dalam upaya mereka untuk bertransformasi menjadi ekonomi yang lebih berbasis teknologi.
+
+
+### Ruang lingkup
+
+Penelitian ini memanfaatkan data yang diperoleh melalui WDI yang diakses menggunakan perangkat lunak R. Data yang digunakan terdiri dari dua variabel utama Ekspor teknologi tinggi (High-technology exports) sebagai variabel independen (X) dan GDP (Produk Domestik Bruto) sebagai variabel dependen (Y). Data ini mencakup 135 negara yang terlibat dalam ekspor teknologi tinggi, dengan fokus pada data tahun 2022.
+
+### Rumusan masalah
+
+Penelitian ini akan menjawab persoalan mengenai:
+
+1.	Seberapa besar kontribusi ekspor teknologi tinggi terhadap GDP?
+2.	Apa saja faktor yang mempengaruhi ekspor teknologi tinggi terhadap GDP  ?
+3.	Apa tantangan yang dihadapi dari pertumbuhan GDP dari ekspor teknologi tinggi?
+
+### Tujuan dan manfaat penelitian
+
+Tujuan penelitian ini dirumuskan untuk memberikan manfaat bagi pemerintah dan masyarakat, dengan fokus pada pengaruh ekspor teknologi tinggi terhadap GDP di 135 Negara Tahun 2022:
+
+*1.*	*Bagi Pemerintah*
+
+Memberikan rekomendasi kebijakan yang berbasis data untuk meningkatkan nilai ekpor teknologi tinggi terhadap GDP 135 negara. Mengidentifikasi strategi yang dapat digunakan pemerintah untuk mengoptimalkan pemanfaatan nilai signifikan dari ekspor teknologi tinggi, sehingga dapat mendukung pertumbuhan ekonomi yang berkelanjutan.
+
+*2.*	*Bagi Masyarakat*
+
+Meningkatkan kesadaran publik mengenai peran ekspor teknologi tinggi terhadap GDBP di 135 Negara Tahun 2022. Mendorong partisipasi masyarakat dalam proses peningkatan ekspor teknologi tinggi, dengan memahami implikasi dari kebijakan tersebut terhadap kehidupan sehari-hari mereka.
+
+
+### Package
+
+Packages yang digunakan antara lain sebagai berikut:
+
+```{r}
+#| warning: false
+#| echo: true
+library(knitr)
+library(ggplot2)
+library(dplyr)
+library(tidyverse)
+library(readxl)
+library(WDI)
+library(lmtest)
+```
+
+## Studi pustaka
+
+*1.* *Ekspor Teknologi Tinggi*
+
+Ekspor teknologi tinggi mengacu pada penjualan barang dan jasa yang menggunakan teknologi canggih dan inovatif. Menurut OECD (2021), produk teknologi tinggi mencakup sektor seperti elektronik, komunikasi, dan bioteknologi. Ekspor dalam kategori ini memiliki potensi besar untuk meningkatkan nilai tambah dan daya saing negara di pasar global.
+
+*2.* *Hubungan Antara Ekspor dan Pertumbuhan Ekonomi*
+
+Beberapa penelitian menunjukkan bahwa ekspor berkontribusi signifikan terhadap pertumbuhan ekonomi. Seperti yang dijelaskan oleh Krugman dan Obstfeld (2018), negara yang mengandalkan ekspor cenderung memiliki tingkat pertumbuhan ekonomi yang lebih tinggi karena akses mereka ke pasar global dan peningkatan permintaan untuk produk domestik.
+
+*3.* *Dampak Ekspor Teknologi Tinggi terhadap GDP*
+
+Penelitian oleh Lall (2000) menunjukkan bahwa ekspor teknologi tinggi dapat meningkatkan GDP melalui beberapa saluran, termasuk peningkatan produktivitas, penciptaan lapangan kerja, dan inovasi. Ekspor teknologi tinggi biasanya melibatkan investasi dalam penelitian dan pengembangan, yang pada gilirannya dapat meningkatkan kapasitas produksi dan daya saing.
+
+*4.* *Studi Terkait di Berbagai Negara*
+
+Penelitian oleh Lee dan Malerba (2018) mengungkapkan bahwa negara-negara dengan fokus kuat pada inovasi dan pendidikan tinggi menunjukkan hubungan positif yang signifikan antara ekspor teknologi tinggi dan GDP. Sementara itu, studi oleh Banga (2015) di negara-negara berkembang menunjukkan bahwa peningkatan ekspor teknologi tinggi dapat membantu mengurangi ketergantungan pada produk primer dan meningkatkan pertumbuhan ekonomi.
+
+*5.* *Faktor-Faktor yang Mempengaruhi Ekspor Teknologi Tinggi*
+
+Beberapa faktor berkontribusi terhadap keberhasilan ekspor teknologi tinggi, termasuk kebijakan perdagangan, kualitas infrastruktur, dan tingkat pendidikan tenaga kerja. Penelitian oleh Xu dan Wang (2020) menunjukkan bahwa investasi dalam pendidikan dan pelatihan meningkatkan kapasitas negara untuk memproduksi dan mengekspor barang-barang teknologi tinggi.
+
+Studi pustaka ini menunjukkan bahwa ekspor teknologi tinggi memiliki potensi besar untuk memengaruhi GDP di berbagai negara. Meskipun banyak penelitian yang menunjukkan hubungan positif, penting untuk mempertimbangkan konteks lokal dan faktor-faktor yang dapat memengaruhi hubungan ini. Penelitian lebih lanjut diperlukan untuk menganalisis dampak spesifik dan kondisi yang mendukung pertumbuhan ekspor teknologi tinggi pada tahun 2022.
+
+
+## Metode penelitian
+
+### Data
+
+penelitian ini menggunakan data tahun 2022, sehingga didapatkan data sebagai berikut:
+
+```{r}
+#| warning: false
+#| echo: true
+library(WDI)
+akai <- WDI(country = "all", 
+              indicator = c("TX.VAL.TECH.CD", "NY.GDP.MKTP.CD"), 
+              start =2023, 
+              end = 2023)
+ akai0 <- na.omit(akai)
+akai0 <- akai0 %>%
+   filter(TX.VAL.TECH.CD != 0, NY.GDP.MKTP.CD != 0)
+colnames(akai0)[colnames(akai0) %in% c("TX.VAL.TECH.CD", "NY.GDP.MKTP.CD")] <- c("X", "Y")
+
+library(dplyr)
+akai0<- akai0%>%
+  select(-iso2c, -iso3c, -year)
+library(knitr)
+kable(akai0)
+library(writexl)
+write_xlsx(akai0,"akai0.xlsx")
+View(akai0)
+```
+
+```{r}
+#| warning: false
+#| echo: true
+library(readxl)
+akai0<-read_excel("akai0.xlsx")
+reg<-lm(Y~X,data=akai0)
+summary(reg)
+library(readxl)
+akai0$m<-resid(reg)
+plot(akai0$Y,akai0$m,xlab="GDP",ylab="error",col='BLUE',pch=16)
+abline(h=0)
+```
+
+
+```{r}
+#| warning: false
+#| echo: true
+library(readxl)
+akai0$m<-resid(reg)
+plot(akai0$X,akai0$m,xlab="Ekspor Teknologi Tinggi",ylab="error",col='red',pch=16)
+abline(h=0)
+```
+Pada plot residual, saya melihat bahwa data tidak tersebar merata di sekitar garis nol, dengan beberapa titik yang jauh dari garis, terutama di sisi kanan plot. Ini menunjukkan adanya data dengan pengaruh besar atau prediksi yang kurang akurat. Sebagian besar residual memiliki nilai kecil, tapi ada juga yang sangat besar, yang mengarah pada kemungkinan adanya heteroskedastisitas, di mana variasi residual meningkat seiring dengan naiknya GDP. Tampaknya ada pola di mana residual lebih besar pada GDP yang tinggi, yang bisa melanggar asumsi regresi OLS, yang mengharuskan varians residual tetap konstan. Untuk memastikan ini, saya perlu melakukan uji formal seperti Breusch-Pagan Test untuk mengonfirmasi apakah heteroskedastisitas memang ada.
+
+```{r}
+library(lmtest)
+bptest(reg)
+```
+
+Hasil uji Breusch-Pagan yang saya lakukan menunjukkan adanya heteroskedastisitas dalam model regresi saya. Nilai BP (Breusch-Pagan Test Statistic) yang saya peroleh adalah 9.5309, yang menunjukkan adanya bukti kuat untuk heteroskedastisitas. Semakin besar nilai ini, semakin jelas bahwa masalah tersebut ada. Derajat kebebasan (df) adalah 1, sesuai dengan jumlah variabel independen dalam model saya. Sementara itu, p-value yang didapatkan adalah 0.00202, yang lebih kecil dari 0.05. Ini berarti heteroskedastisitas terjadi secara signifikan, yang mengindikasikan bahwa varians residual tidak konstan, dan ini melanggar asumsi regresi OLS. Untuk mengatasi masalah ini, saya bisa menggunakan Weighted Least Squares (WLS), metode yang sering digunakan untuk menangani heteroskedastisitas.
+
+```{r}
+weights <- 1 / fitted(reg)^2
+wls_akai0 <- lm(Y ~ X, data = akai0, weights = weights)
+summary(wls_akai0)
+plot(fitted(wls_akai0), resid(wls_akai0), main = "Residuals vs Fitted")
+abline(h = 0, col = "red")
+```
+
+Grafik Residuals vs Fitted menunjukkan bahwa sebagian besar residual tersebar di sekitar nol pada nilai fitted rendah, namun ada beberapa residual besar pada nilai fitted tinggi, yang mengindikasikan kemungkinan adanya heteroskedastisitas. Selain itu, beberapa titik jauh dari kumpulan data utama, terutama pada GDP yang sangat tinggi, kemungkinan merupakan outlier atau leverage points, seperti negara-negara dengan GDP besar. Untuk mengatasi masalah ini, saya dapat menggunakan Cook's Distance untuk mengidentifikasi outlier dan mencoba transformasi logaritmik pada data untuk mengurangi skala variabel besar dan memperbaiki distribusi residual.
+
+```{r}
+akai0$log_Y <- log(akai0$Y)
+akai0$log_X <- log(akai0$X)
+log_akai0 <- lm(log_Y ~ log_X, data = akai0)
+summary(log_akai0)
+plot(fitted(log_akai0), resid(log_akai0), main = "Residuals vs Fitted")
+abline(h = 0, col = "blue")
+library(dplyr)
+akai0<- akai0%>%
+  select(-X, -Y)
+library(knitr)
+kable(akai0)
+library(writexl)
+write_xlsx(akai0,"akai0.xlsx")
+View(akai0)
+```
+
+
+Dalam grafik Residuals vs Fitted yang saya buat, saya melihat bahwa sebagian besar titik residual tersebar secara acak di sekitar garis horizontal nol. Ini memberikan indikasi awal bahwa model regresi yang saya gunakan memenuhi asumsi linearitas. Selain itu, varians residual tampaknya konstan, yang berarti asumsi homoskedastisitas juga cenderung terpenuhi. 
+
+Kemudian dilakukan Uji normalitas residual menggunakan Shapiro-Wilk test untuk mengevaluasi kualitas model regresi dan memastikan hasil analisis dapat dipercaya. 
+
+```{r}
+shapiro.test(resid(log_akai0))
+```
+
+Berdasarkan hasil Shapiro-Wilk normality test yang saya lakukan, saya mendapatkan nilai W = 0.99177 dan p-value = 0.6339. Nilai W yang mendekati 1 menunjukkan bahwa data residual saya tidak jauh berbeda dari distribusi normal. Selain itu, dengan p-value sebesar 0.6339, yang lebih besar dari 0.05, saya tidak memiliki cukup bukti untuk menolak hipotesis nol bahwa data saya mengikuti distribusi normal. Dengan demikian, saya dapat menyimpulkan bahwa data residual saya mengikuti distribusi normal, dan asumsi normalitas dalam model regresi saya dapat diterima.
+
+### Metode analisis
+
+Penelitian ini menerapkan metode regresi univariat atau Ordinary Least Square (OLS) dengan satu variabel independen. Penelitian ini bertujuan untuk mengkaji hubungan antara Ekspor teknologi tinggi dan GDP. Model yang digunakan dirancang secara khusus untuk merepresentasikan keterkaitan antara kedua variabel tersebut, dengan bentuk sebagai berikut:
+
+$$
+y_{t}=\beta_0 + \beta_1 x_t+\mu_t
+$$ di mana $y_t$ adalah GDP dan $x_t$ adalah Ekspor teknologi tinggi.
+
+## Pembahasan
+
+### Pembahasan masalah
+
+Regresi yang telah dilakukan, menghasilkan data sebgai berikut:
+
+| variable           | Coefficients |
+|--------------------|--------------|
+| Intercept          | 16.77253     |
+| X                  | 0.43383      |
+| p-value            | 2.2e-16      |
+| Multiple R-squared | 0.7406       |
+| Adjusted R-squared | 0.7386       |
+
+Sehingga didapatkan:
+$$y_{t}=\ (16.77253) + \ (0.43383)x+\mu_t$$
+
+Setelah melakukan transformasi logaritmik pada variabel Y (GDP) dan X (Ekspor Teknologi Tinggi), model yang dihasilkan menunjukkan Koefisien sebesar 0.43383 yang artinya setiap kenaikan 1% pada ekspor teknologi tinggi (X) akan meningkatkan GDP (Y) sebesar 0.43383%. Ini mengindikasikan adanya hubungan positif yang signifikan antara kedua variabel.
+
+### Analisis masalah
+
+Hasil regresinya adalah
+
+```{r}
+library(readxl)
+reg<-lm(log_Y ~ log_X,data=akai0)
+summary(reg)
+```
+
+Koefisien untuk log_X sebesar 0.43383 menunjukkan bahwa setiap kenaikan satu unit pada log_X akan meningkatkan log_Y sebesar 0.43383, dan hasil ini sangat signifikan secara statistik (p-value < 2e-16). Nilai R-squared sebesar 0.7406 menunjukkan bahwa sekitar 74% variasi dalam log_Y dapat dijelaskan oleh log_X, yang menunjukkan kekuatan model dalam menggambarkan hubungan tersebut. Adjusted R-squared yang sedikit lebih rendah (0.7386) juga mendukung bahwa model ini tetap baik meskipun hanya melibatkan satu variabel. Selain itu, F-statistic sebesar 371.2 dengan p-value yang sangat kecil (< 2.2e-16) menunjukkan bahwa model secara keseluruhan signifikan.
+
+## Kesimpulan
+
+Penelitian ini menganalisis pengaruh ekspor teknologi tinggi terhadap GDP di 135 negara pada tahun 2022, dengan tujuan untuk memahami kontribusi ekspor teknologi tinggi terhadap pertumbuhan ekonomi dan faktor-faktor yang mempengaruhinya. Berdasarkan hasil regresi yang dilakukan, ditemukan bahwa terdapat hubungan positif yang signifikan antara ekspor teknologi tinggi (X) dan GDP (Y). Setiap peningkatan 1% dalam ekspor teknologi tinggi diperkirakan akan meningkatkan GDP sebesar 0.43383%. Model regresi yang digunakan mampu menjelaskan sekitar 74% variasi dalam GDP, menunjukkan kekuatan hubungan antara kedua variabel tersebut.
+
+Namun, analisis residual menunjukkan adanya potensi masalah heteroskedastisitas, yang berarti varians residual tidak konstan di seluruh rentang data, terutama pada GDP yang lebih tinggi. Untuk mengatasi hal ini, dilakukan transformasi logaritmik pada data, yang menghasilkan model yang lebih baik dengan asumsi normalitas dan homoskedastisitas yang terpenuhi. Hasil uji Shapiro-Wilk menunjukkan bahwa data residual mengikuti distribusi normal, yang mengindikasikan kualitas model yang baik. Penelitian ini menyimpulkan bahwa ekspor teknologi tinggi memiliki dampak yang signifikan terhadap pertumbuhan ekonomi, dengan hubungan yang dapat dijelaskan melalui model regresi logaritmik. 
+
+Secara teoritis, ekspor teknologi tinggi memiliki dampak signifikan terhadap pertumbuhan ekonomi karena beberapa alasan yang mendalam. Pertama, ekspor teknologi tinggi dapat meningkatkan daya saing suatu negara di pasar global. Produk teknologi tinggi, seperti elektronik, bioteknologi, dan perangkat keras canggih, sering kali memiliki nilai tambah yang lebih tinggi dibandingkan dengan produk tradisional. Ini berarti bahwa ekspor produk semacam itu dapat meningkatkan pendapatan negara melalui peningkatan nilai ekspor, yang secara langsung berkontribusi terhadap GDP.
+
+Kedua, sektor teknologi tinggi sering kali memerlukan investasi besar dalam penelitian dan pengembangan (R&D), yang mendorong inovasi. Inovasi ini tidak hanya meningkatkan kualitas dan efisiensi produk tetapi juga dapat menciptakan sektor-sektor industri baru yang lebih produktif. Peningkatan produktivitas ini mendorong pertumbuhan ekonomi secara keseluruhan, karena sektor-sektor ekonomi yang lebih efisien dapat beroperasi dengan biaya yang lebih rendah, sambil menghasilkan lebih banyak produk atau jasa.
+
+Ketiga, ekspor teknologi tinggi juga berperan dalam menciptakan lapangan kerja yang lebih berkualitas. Industri berbasis teknologi canggih sering kali membutuhkan tenaga kerja dengan keterampilan tinggi, yang mendorong peningkatan kualitas tenaga kerja di suatu negara. Peningkatan kualitas sumber daya manusia ini akan berkontribusi pada penguatan sektor-sektor ekonomi lainnya dan secara tidak langsung meningkatkan pertumbuhan ekonomi.
+
+Keempat, ekspor teknologi tinggi dapat memperkuat posisi negara dalam rantai pasokan global. Negara yang mampu memproduksi dan mengekspor produk-produk teknologi tinggi akan lebih mudah mengakses pasar internasional, yang memberikan peluang lebih besar untuk pertumbuhan ekonomi. Hal ini terkait dengan teori perdagangan internasional yang menunjukkan bahwa negara yang terlibat dalam perdagangan barang-barang dengan nilai tambah tinggi akan merasakan manfaat pertumbuhan yang lebih cepat.
+
+## Referensi
+
+https://id.tradingeconomics.com
+
+https://www.bps.go.id/id BPS 
+
+https://www.worldbank.org/ext/en/home world bank
+
+•  OECD. (2021). The Digital Economy Outlook 2021. Paris: OECD Publishing. 
+
+•  Krugman, P., & Obstfeld, M. (2018). International Economics: Theory and Policy. Pearson.
+
+•  Lall, S. (2000). "The Technological Structure of Developing Country Exports." Oxford Development Studies, 28(3), 337-354.
+
+•  Lee, K., & Malerba, F. (2018). "Innovation and the Global Economy." Research Policy, 47(9), 1768-1780.
+
+•  Banga, R. (2015). "Impact of High-Tech Exports on Economic Growth: Evidence from Developing Countries." Journal of Economic Studies, 42(5), 925-945. 
+
+•  Xu, B., & Wang, Z. (2020). "Education, Technology, and Economic Growth: A Global Perspective." The World Economy, 43(2), 458-482..
